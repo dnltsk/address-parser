@@ -33,6 +33,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
 	implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
+	implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
 }
