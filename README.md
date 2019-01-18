@@ -14,4 +14,8 @@
 
 ## execute
 
-`java -jar build/libs/addressparser-*.jar`
+* simple address: <br>`java -jar build/libs/addressparser-*.jar "Winterallee 3"`
+* more complex address: <br>`java -jar build/libs/addressparser-*.jar "Am Bächle 23"`
+* french address: <br>`java -jar build/libs/addressparser-*.jar "4, rue de la revolution"`
+* usa address: <br>`java -jar build/libs/addressparser-*.jar "200 Broadway Av"`
+* spain address: <br>`java -jar build/libs/addressparser-*.jar "Calle Aduana, 29"`
