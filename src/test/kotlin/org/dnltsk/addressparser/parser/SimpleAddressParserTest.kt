@@ -39,6 +39,7 @@ class SimpleAddressParserTest {
     fun `not simple cases are ignored`() {
         val testCases = listOf(
             "",//empty string
+            "  ",//two spaces
             "   ",//just whitespaces
             "invalid_address",
             "Am Bächle 23",
