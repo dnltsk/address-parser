@@ -11,13 +11,16 @@ class Runner : CommandLineRunner {
     @Autowired
     private lateinit var addressParser: AddressParser
 
+    @Autowired
+    private lateinit var consolePrinter: ConsolePrinter
+
     override fun run(vararg args: String?) {
         if(!args.isEmpty()){
-            val addressString = args!!.get(0)!!
-            println(addressString)
-            println(addressParser.parse(addressString))
+            val inputAddress = args!!.get(0)!!
+            val address = addressParser.parse(inputAddress)
+            consolePrinter.printResult(inputAddress, address)
         }else{
-            println("no address string defined. use, \"Winterallee 3\" (with quotes) for instance")
+            consolePrinter.printError()
         }
     }
 
