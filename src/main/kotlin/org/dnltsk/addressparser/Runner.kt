@@ -17,7 +17,7 @@ class Runner : CommandLineRunner {
 
     override fun run(vararg args: String?) {
         if (!args.isEmpty()) {
-            val inputAddress = args!!.get(0)!!
+            val inputAddress = args[0]!!
             triggerParse(inputAddress)
         } else {
             consolePrinter.printNoAddressProvidedError()
