@@ -26,7 +26,7 @@ class SimpleAddressParserTest {
         testCases.forEachIndexed { i, it ->
             val inputAddress = it.first
             val expectedAddress = it.second
-            assertThat(addressParser.fitsToInputAddress(inputAddress))
+            assertThat(addressParser.isEffecting(inputAddress))
                 .`as`("issues with test case $i")
                 .isEqualTo(true)
             assertThat(addressParser.parse(inputAddress))
@@ -50,7 +50,7 @@ class SimpleAddressParserTest {
         )
 
         testCases.forEach {
-            assertThat(addressParser.fitsToInputAddress(it))
+            assertThat(addressParser.isEffecting(it))
                 .`as`("issues with test case $it")
                 .isEqualTo(false)
         }

@@ -4,7 +4,7 @@ import org.dnltsk.addressparser.Address
 
 interface AddressParser {
 
-    fun fitsToInputAddress(inputAddress: String): Boolean
+    fun isEffecting(inputAddress: String): Boolean
     fun parse(inputAddress: String): Address
 
 }

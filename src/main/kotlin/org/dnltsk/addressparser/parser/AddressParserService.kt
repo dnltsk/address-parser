@@ -15,7 +15,7 @@ class AddressParserService {
      */
     fun parse(inputAddress: String): List<Address> {
         return addressParsers.mapNotNull {
-            if (it.fitsToInputAddress(inputAddress)) {
+            if (it.isEffecting(inputAddress)) {
                 it.parse(inputAddress)
             } else {
                 null
