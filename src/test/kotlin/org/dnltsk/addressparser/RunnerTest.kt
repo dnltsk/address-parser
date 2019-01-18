@@ -13,10 +13,11 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
+import java.text.ParseException
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class RunnerTest{
+class RunnerTest {
 
     @InjectMocks
     private lateinit var runner: Runner
@@ -30,16 +31,17 @@ class RunnerTest{
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        whenever(addressParser.parse(any())).thenReturn(Address("dummy-street", "dummy-hn"))
     }
 
     @Test
     fun `given address processed via parser and printer`() {
+        whenever(addressParser.parse(any())).thenReturn(Address("dummy-street", "dummy-hn"))
         val addressString = "Winterallee 3"
         runner.run(addressString)
         verify(addressParser).parse(addressString)
         verify(consolePrinter).printResult(any(), any())
-        verify(consolePrinter, never()).printError()
+        verify(consolePrinter, never()).printNoAddressProvidedError()
+        verify(consolePrinter, never()).printParseException(any(), any())
     }
 
     @Test
@@ -47,7 +49,23 @@ class RunnerTest{
         runner.run() //vararg == empty
         verify(addressParser, never()).parse(any())
         verify(consolePrinter, never()).printResult(any(), any())
-        verify(consolePrinter).printError()
+        verify(consolePrinter).printNoAddressProvidedError()
+        verify(consolePrinter, never()).printParseException(any(), any())
+    }
+
+    @Test
+    fun `ParseException is catched correctly`() {
+        //given
+        val addressString = "dummy address"
+        val throwedParseException = ParseException("dummy-exception", 0)
+        whenever(addressParser.parse(any())).thenThrow(throwedParseException)
+        //when
+        runner.run(addressString)
+        //then
+        verify(addressParser).parse(addressString)
+        verify(consolePrinter, never()).printResult(any(), any())
+        verify(consolePrinter, never()).printNoAddressProvidedError()
+        verify(consolePrinter).printParseException(addressString, throwedParseException)
     }
 
 }
