@@ -8,10 +8,10 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class AddressParserServiceTest{
+class AddressParseServiceTest{
 
     /*
-     * TODO: test AddressParserServiceTest correct behaviour of AddressParserService
+     * TODO: test AddressParseServiceTest correct behaviour of AddressParseService
      * (skipped due to issues with mocking & stubbing of List<AddressParser>)
      */
 

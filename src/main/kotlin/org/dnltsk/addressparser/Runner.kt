@@ -1,6 +1,6 @@
 package org.dnltsk.addressparser
 
-import org.dnltsk.addressparser.parser.AddressParserService
+import org.dnltsk.addressparser.parser.AddressParseService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 class Runner : CommandLineRunner {
 
     @Autowired
-    private lateinit var parserService: AddressParserService
+    private lateinit var parseService: AddressParseService
 
     @Autowired
     private lateinit var consolePrinter: ConsolePrinter
@@ -24,7 +24,7 @@ class Runner : CommandLineRunner {
     }
 
     private fun triggerParse(inputAddress: String) {
-        val address = parserService.parse(inputAddress)
+        val address = parseService.parse(inputAddress)
         if (address.isEmpty()) {
             consolePrinter.printEmptyResult(inputAddress)
         } else {
