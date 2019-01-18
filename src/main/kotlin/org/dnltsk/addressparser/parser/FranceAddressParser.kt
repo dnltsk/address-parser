@@ -9,7 +9,7 @@ class FranceAddressParser : AddressParser {
 
     private val franceSignalWords = listOf("rue")
     private val splitPattern = Pattern.compile("\\s+")
-    private val groupRegex = Regex("(^.+),\\s+(.+)$")
+    private val groupRegex = Regex("^(.+),\\s+(.+)$")
 
     override fun isEffecting(inputAddress: String): Boolean {
         val tokens = inputAddress.trim().split(splitPattern)
