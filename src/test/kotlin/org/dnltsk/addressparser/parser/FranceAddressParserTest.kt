@@ -16,7 +16,7 @@ class FranceAddressParserTest{
     private lateinit var addressParser: FranceAddressParser
 
     @Test
-    fun `more complicated cases are parsed correctly`() {
+    fun `France cases are parsed correctly`() {
         val testCases = listOf(
             Pair("4, rue de la revolution", Address("rue de la revolution", "4")),
             Pair("4a, rue de la revolution", Address("rue de la revolution", "4a")),
@@ -36,7 +36,7 @@ class FranceAddressParserTest{
     }
 
     @Test
-    fun `not more complicated are ignored`() {
+    fun `not France cases are ignored`() {
         val testCases = listOf(
             "",//empty string
             "  ",//two spaces
